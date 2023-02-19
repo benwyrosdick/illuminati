@@ -1,29 +1,44 @@
 from flask import Flask, request
 from markupsafe import escape
-import lights
+import illuminati
 
 import threading
 
-runner = lights.Runner()
+runner = illuminati.Illuminati()
 
-def lightThread():
+def illuminatiThread():
   runner.run()
 
-lt = threading.Thread(target=lightThread)
-lt.start()
+it = threading.Thread(target=illuminatiThread)
+it.start()
 
 app = Flask(__name__)
 
 @app.route("/off")
 def all_off():
-  runner.set_routine('', request.args)
+  args = _parse_args(request)
+  runner.set_routine('', args)
   return {
-    "name": "off"
+    "name": "off",
+    'args': args
   }
 
 @app.route('/routine/<name>')
 def run_routine(name):
-  runner.set_routine(name, request.args)
+  args = _parse_args(request)
+  runner.set_routine(name, args)
   return {
-    "name": name
+    "name": name,
+    'args': args
+  }
+
+def _parse_args(request):
+  hues = request.args.getlist('hue')
+  delay = request.args.get('delay')
+  spread = request.args.get('spread')
+
+  return {
+    'hues': hues,
+    'delay': delay,
+    'spread': spread
   }
