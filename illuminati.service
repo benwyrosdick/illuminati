@@ -1,0 +1,12 @@
+[Unit]
+Description=Wireless neopixel server
+After=sshd.service
+
+[Service]
+WorkingDirectory=/opt/illuminati
+ExecStart=/opt/illuminati/app.py
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
