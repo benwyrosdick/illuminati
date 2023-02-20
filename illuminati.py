@@ -6,7 +6,6 @@ from . import lights
 from .routines import off, flicker, rainbow, solid, chase
 
 default_delay = 0.5
-last_tick = 0
 tick_speed = 0.01
 
 class Illuminati():
@@ -16,6 +15,7 @@ class Illuminati():
 
     self.routine = self.routine = off.Routine(self, {})
     self.delay = default_delay
+    self.last_tick = 0
   
   def set_routine(self, routine, args):
     hue_colors = list(map(lights.degrees_to_rgb, args['hues'])) if args['hues'] else []
@@ -42,7 +42,7 @@ class Illuminati():
     elif (routine == 'rainbow'):
       self.routine = rainbow.Routine(self, safe_args)
 
-    self.delay = self.routine.getArg('delay') or default_delay
+    self.delay = self.routine.delay if 'delay' in self.routine.__dict__ else default_delay
 
     return self.routine
 
@@ -50,8 +50,8 @@ class Illuminati():
     while True:
       now = time.time()
 
-      if now - last_tick > self.delay:
-        last_tick = now
+      if now - self.last_tick > self.delay:
+        self.last_tick = now
         
         if self.routine:
           self.routine.tick()

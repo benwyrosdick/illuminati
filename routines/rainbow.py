@@ -1,4 +1,5 @@
 from .. import lights
+from . import routine
 
 defaults = {
   'delay': 0.06,
@@ -7,32 +8,9 @@ defaults = {
   'reverse': False
 }
 
-class Routine():
-  def __init__ (self, app, args={}):
-    # defaults
-    self.app = app
-    self.args = args
-
-    self.delay = self.getArg('delay')
-    self.spread = self.getArg('spread')
-    self.sequence = self.getArg('sequence')
-    self.sequence_max = self.getArg('sequence_max')
-
-  def config(self):
-    return {
-      'name': 'flicker',
-      'delay': self.delay,
-      'spread': self.spread,
-      'sequence_max': self.sequence_max
-    }
-  
-  def getArg(self, arg):
-    if arg in self.args:
-      return self.args[arg]
-    elif arg in defaults:
-      return defaults[arg]
-    else:
-      return None
+class Routine(routine.Routine):
+  def __init__(self, app, args):
+    super().__init__(app, args, defaults)
 
   def tick(self):
     shift = 1.0 / self.sequence_max

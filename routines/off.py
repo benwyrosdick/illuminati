@@ -1,25 +1,11 @@
 from .. import lights
+from . import routine
 
 defaults = {}
 
-class Routine():
-  def __init__ (self, app, args={}):
-    # defaults
-    self.app = app
-    self.args = args
-  
-  def config(self):
-    return {
-      'name': 'off'
-    }
-
-  def getArg(self, arg):
-    if arg in self.args:
-      return self.args[arg]
-    elif arg in defaults:
-      return defaults[arg]
-    else:
-      return None
+class Routine(routine.Routine):
+  def __init__(self, app, args):
+    super().__init__(app, args, defaults)
 
   def tick(self):
     self.app.pixels.fill(lights.colors['black'])
