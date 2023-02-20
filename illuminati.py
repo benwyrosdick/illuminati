@@ -22,6 +22,7 @@ class Illuminati():
     hex_colors = list(map(lights.hex2rgb, args['colors'])) if args['colors'] else []
     all_colors = hue_colors + hex_colors
 
+    # build args
     safe_args = {}
     if args['delay']:
       safe_args['delay'] = int(args['delay']) / 1000.0
@@ -31,6 +32,10 @@ class Illuminati():
       safe_args['spread'] = lights.degrees_to_decimal(args['spread'])
     safe_args['reverse'] = args['reverse']
 
+    if 'sequence' in self.routine.__dict__:
+      safe_args['sequence'] = self.routine.sequence
+
+    # Select routine
     if (routine == 'off'):
       self.routine = off.Routine(self, safe_args)
     if (routine == 'solid'):

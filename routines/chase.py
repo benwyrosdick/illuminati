@@ -23,12 +23,7 @@ class Routine(routine.Routine):
 
   def tick(self):
     for i in range(self.app.num_pixels):
-      if self.reverse:
-        self.app.pixels[i] = self.colors[(i - self.sequence) % len(self.colors)]
-      else:
-        self.app.pixels[i] = self.colors[(i + self.sequence) % len(self.colors)]
+      self.app.pixels[i] = self.colors[(i + self.sequence) % len(self.colors)]
 
-    self.sequence += 1
-    self.sequence %= len(self.colors)
-
+    self.increment_sequence()
     self.app.pixels.show()
