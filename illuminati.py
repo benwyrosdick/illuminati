@@ -27,6 +27,7 @@ class Illuminati():
       safe_args['colors'] = all_colors
     if args['spread']:
       safe_args['spread'] = lights.degrees_to_decimal(args['spread'])
+    safe_args['reverse'] = args['reverse']
 
     if (routine == 'off'):
       self.routine = off.Routine(self, safe_args)
