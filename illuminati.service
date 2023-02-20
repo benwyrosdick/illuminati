@@ -4,7 +4,7 @@ After=sshd.service
 
 [Service]
 WorkingDirectory=/opt/illuminati
-ExecStart=/opt/illuminati/app.py
+ExecStart=flask run --host 0.0.0.0
 Restart=always
 User=root
 

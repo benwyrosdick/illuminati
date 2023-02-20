@@ -1,5 +1,4 @@
 from flask import Flask, request
-from markupsafe import escape
 from . import illuminati
 
 import threading
