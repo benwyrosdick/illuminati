@@ -4,7 +4,7 @@ from .. import lights
 
 defaults = {
   'delay': 0.025,
-  'colors': [(170, 0, 255)],
+  'colors': [lights.colors['violet']],
   'spread': 15 / 360,
 }
 
@@ -23,6 +23,7 @@ class Routine():
       'name': 'flicker',
       'delay': self.delay,
       'colors': self.colors,
+      'spread': self.spread
     }
   
   def getArg(self, arg):

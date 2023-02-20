@@ -1,3 +1,5 @@
+from .. import lights
+
 defaults = {}
 
 class Routine():
@@ -20,5 +22,5 @@ class Routine():
       return None
 
   def tick(self):
-    self.app.pixels.fill((0,0,0))
+    self.app.pixels.fill(lights.colors['black'])
     self.app.pixels.show()

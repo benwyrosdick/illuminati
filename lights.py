@@ -4,6 +4,18 @@ import colorsys
 import random
 import time
 
+colors = {
+    'red': (255,0,0),
+    'orange': (255,127,0),
+    'yellow': (255,255,0),
+    'green': (0,255,0),
+    'blue': (0,0,255),
+    'indigo': (75,0,130),
+    'violet': (143,0,255),
+    'white': (255,255,255),
+    'black': (0,0,0)
+}
+
 def get_board(num_pixels=50, auto_write=False, brightness=0.2, pixel_order=neopixel.RGB):
     return neopixel.NeoPixel(board.D18, num_pixels, auto_write=auto_write, brightness=brightness, pixel_order=pixel_order)
 

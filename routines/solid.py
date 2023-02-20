@@ -1,7 +1,7 @@
 from .. import lights
 
 defaults = {
-  'colors': [(170, 0, 255)],
+  'colors': [lights.colors['violet']],
 }
 
 class Routine():
@@ -27,8 +27,8 @@ class Routine():
       return None
 
   def tick(self):
-    for x in range(self.app.num_pixels):
-      color = self.colors[x % len(self.colors)]
-      self.app.pixels[x] = color
+    for i in range(self.app.num_pixels):
+      color = self.colors[i % len(self.colors)]
+      self.app.pixels[i] = color
 
     self.app.pixels.show()
