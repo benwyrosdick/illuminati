@@ -10,6 +10,16 @@ def get_board(num_pixels=50, auto_write=False, brightness=0.2, pixel_order=neopi
 def hls2rgb(h,l,s):
     return tuple(round(i * 255) for i in colorsys.hls_to_rgb(h,l,s))
 
+def hsv2rgb(h,l,s):
+    return tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h,l,s))
+
+def hex2rgb(hex):
+    lv = len(hex)
+    return tuple(int(hex[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+def rgb2hsv(rgb):
+    return colorsys.rgb_to_hsv(rgb[0],rgb[1],rgb[2])
+
 def randomList(items):
     return items[random.randint(0, len(items)-1)]
 
@@ -21,3 +31,7 @@ def randomColor():
 
 def degrees_to_decimal(deg):
     return float(deg) / 360.0
+
+def degrees_to_rgb(deg):
+    hue = degrees_to_decimal(deg)
+    return hls2rgb(hue, 0.5, 1)
