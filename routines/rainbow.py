@@ -3,7 +3,8 @@ from .. import lights
 defaults = {
   'delay': 0.06,
   'sequence': 0,
-  'sequence_max': 150
+  'sequence_max': 150,
+  'reverse': False
 }
 
 class Routine():
@@ -38,8 +39,14 @@ class Routine():
     step = 1.0 / self.app.num_pixels
 
     for x in range(self.app.num_pixels):
-      hue = self.sequence*shift + step*x
-      hue = hue - int(hue)
+      hue = self.sequence*shift
+
+      if self.reverse:
+        hue -= step*x        
+      else:
+        hue += step*x
+
+      hue %= 1.0
       self.app.pixels[x] = lights.hls2rgb(hue, 0.5, 1)
 
     self.sequence += 1

@@ -5,7 +5,8 @@ from .. import lights
 defaults = {
   'delay': 0.2,
   'colors': [lights.colors['violet'], lights.colors['violet'], lights.colors['black'], lights.colors['black']],
-  'sequence': 0
+  'sequence': 0,
+  'reverse': False,
 }
 
 class Routine():
@@ -16,13 +17,15 @@ class Routine():
 
     self.delay = self.getArg('delay')
     self.colors = self.getArg('colors')
+    self.colors = self.getArg('reverse')
     self.sequence = self.getArg('sequence')
 
   def config(self):
     return {
       'name': 'chase',
       'delay': self.delay,
-      'colors': self.colors
+      'colors': self.colors,
+      'reverse': self.reverse,
     }
   
   def getArg(self, arg):
@@ -35,7 +38,10 @@ class Routine():
 
   def tick(self):
     for i in range(self.app.num_pixels):
-      self.app.pixels[i] = self.colors[(i + self.sequence) % len(self.colors)]
+      if self.reverse:
+        self.app.pixels[i] = self.colors[(i - self.sequence) % len(self.colors)]
+      else:
+        self.app.pixels[i] = self.colors[(i + self.sequence) % len(self.colors)]
 
     self.sequence += 1
     self.sequence %= len(self.colors)
