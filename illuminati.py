@@ -6,7 +6,7 @@ from . import lights
 from .routines import off, flicker, rainbow, solid, chase
 
 default_delay = 0.5
-tick_speed = 0.01
+tick_speed = 0.005
 
 class Illuminati():
   def __init__ (self, num_pixels=50, brightness=0.2, pixel_order=neopixel.RGB):
@@ -47,7 +47,7 @@ class Illuminati():
     elif (routine == 'rainbow'):
       self.routine = rainbow.Routine(self, safe_args)
 
-    self.delay = self.routine.delay if 'delay' in self.routine.__dict__ else default_delay
+    self.delay = self.routine.delay
 
     return self.routine
 
