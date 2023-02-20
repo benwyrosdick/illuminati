@@ -13,8 +13,6 @@ defaults = {
     lights.colors['black'],
     lights.colors['black']
   ],
-  'sequence': 0,
-  'reverse': False,
 }
 
 class Routine(routine.Routine):
