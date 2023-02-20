@@ -3,7 +3,7 @@ import random
 import time
 
 from . import lights
-from .routines import off, flicker, rainbow
+from .routines import off, flicker, rainbow, solid
 
 default_delay = 0.5
 
@@ -30,6 +30,8 @@ class Illuminati():
 
     if (routine == 'off'):
       self.routine = off.Routine(self, safe_args)
+    if (routine == 'solid'):
+      self.routine = solid.Routine(self, safe_args)
     elif (routine == 'flicker'):
       self.routine = flicker.Routine(self, safe_args)
     elif (routine == 'rainbow'):
