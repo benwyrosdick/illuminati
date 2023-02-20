@@ -1,6 +1,6 @@
 from flask import Flask, request
 from markupsafe import escape
-import illuminati
+from . import illuminati
 
 import threading
 
@@ -17,12 +17,14 @@ app = Flask(__name__)
 @app.route("/off")
 def all_off():
   args = _parse_args(request)
-  return runner.set_routine('off', args)
+  routine = runner.set_routine('off', args)
+  return routine.config()
 
 @app.route('/routine/<name>')
 def run_routine(name):
   args = _parse_args(request)
-  return runner.set_routine(name, args)
+  routine = runner.set_routine(name, args)
+  return routine.config()
 
 def _parse_args(request):
   hues = request.args.getlist('hue')
