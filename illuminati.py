@@ -3,7 +3,7 @@ import random
 import time
 
 from . import lights
-from .routines import off, flicker, rainbow, solid, chase, twinkle
+from .routines import off, flicker, rainbow, solid, chase, twinkle, trails
 
 default_delay = 0.5
 tick_speed = 0.005
@@ -30,6 +30,8 @@ class Illuminati():
       safe_args['colors'] = all_colors
     if args['spread']:
       safe_args['spread'] = lights.degrees_to_decimal(args['spread'])
+    if args['length']:
+      safe_args['length'] = int(args['length'])
     safe_args['reverse'] = args['reverse']
 
     if 'sequence' in self.routine.__dict__:
@@ -46,6 +48,8 @@ class Illuminati():
       self.routine = flicker.Flicker(self, safe_args)
     elif (routine == 'twinkle'):
       self.routine = twinkle.Twinkle(self, safe_args)
+    elif (routine == 'trails'):
+      self.routine = trails.Trails(self, safe_args)
     elif (routine == 'rainbow'):
       self.routine = rainbow.Rainbow(self, safe_args)
 

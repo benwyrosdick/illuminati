@@ -34,6 +34,7 @@ def _parse_args(request):
   colors = request.args.getlist('color')
   delay = request.args.get('delay')
   spread = request.args.get('spread')
+  length = request.args.get('length')
   reverse = request.args.get('reverse', default=False, type=bool)
 
   return {
@@ -41,5 +42,6 @@ def _parse_args(request):
     'colors': colors,
     'delay': delay,
     'spread': spread,
+    'length': length,
     'reverse': reverse
   }
