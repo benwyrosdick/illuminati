@@ -13,6 +13,10 @@ it.start()
 
 app = Flask(__name__)
 
+@app.route("/")
+def status():
+  return runner.routine.config()
+
 @app.route("/off")
 def all_off():
   args = _parse_args(request)

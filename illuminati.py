@@ -3,7 +3,7 @@ import random
 import time
 
 from . import lights
-from .routines import off, flicker, rainbow, solid, chase
+from .routines import off, flicker, rainbow, solid, chase, twinkle
 
 default_delay = 0.5
 tick_speed = 0.005
@@ -13,7 +13,7 @@ class Illuminati():
     self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=brightness, pixel_order=pixel_order)
     self.num_pixels = num_pixels
 
-    self.routine = self.routine = off.Routine(self, {})
+    self.routine = self.routine = off.Off(self, {})
     self.delay = default_delay
     self.last_tick = 0
   
@@ -37,15 +37,17 @@ class Illuminati():
 
     # Select routine
     if (routine == 'off'):
-      self.routine = off.Routine(self, safe_args)
+      self.routine = off.Off(self, safe_args)
     if (routine == 'solid'):
-      self.routine = solid.Routine(self, safe_args)
+      self.routine = solid.Solid(self, safe_args)
     if (routine == 'chase'):
-      self.routine = chase.Routine(self, safe_args)
+      self.routine = chase.Chase(self, safe_args)
     elif (routine == 'flicker'):
-      self.routine = flicker.Routine(self, safe_args)
+      self.routine = flicker.Flicker(self, safe_args)
+    elif (routine == 'twinkle'):
+      self.routine = twinkle.Twinkle(self, safe_args)
     elif (routine == 'rainbow'):
-      self.routine = rainbow.Routine(self, safe_args)
+      self.routine = rainbow.Rainbow(self, safe_args)
 
     self.delay = self.routine.delay
 

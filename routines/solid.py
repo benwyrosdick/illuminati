@@ -5,7 +5,7 @@ defaults = {
   'colors': [lights.colors['violet']],
 }
 
-class Routine(routine.Routine):
+class Solid(routine.Routine):
   def __init__(self, app, args):
     super().__init__(app, args, defaults)
 

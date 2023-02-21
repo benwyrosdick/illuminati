@@ -15,7 +15,7 @@ defaults = {
   ],
 }
 
-class Routine(routine.Routine):
+class Chase(routine.Routine):
   def __init__(self, app, args):
     super().__init__(app, args, defaults)
 

@@ -3,7 +3,7 @@ from . import routine
 
 defaults = {}
 
-class Routine(routine.Routine):
+class Off(routine.Routine):
   def __init__(self, app, args):
     super().__init__(app, args, defaults)
 

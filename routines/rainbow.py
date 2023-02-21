@@ -6,7 +6,7 @@ defaults = {
   'sequence_max': 150,
 }
 
-class Routine(routine.Routine):
+class Rainbow(routine.Routine):
   def __init__(self, app, args):
     super().__init__(app, args, defaults)
 
