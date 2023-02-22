@@ -3,7 +3,7 @@ import random
 import time
 
 from . import lights
-from .routines import off, flicker, rainbow, solid, chase, twinkle, trails
+from .routines import off, flicker, rainbow, solid, chase, twinkle, trails, cycle
 
 default_delay = 0.5
 tick_speed = 0.005
@@ -48,6 +48,8 @@ class Illuminati():
       self.routine = trails.Trails(self, safe_args)
     elif (routine == 'rainbow'):
       self.routine = rainbow.Rainbow(self, safe_args)
+    elif (routine == 'cycle'):
+      self.routine = cycle.Cycle(self, safe_args)
 
     self.delay = self.routine.delay
 
