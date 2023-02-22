@@ -1,9 +1,12 @@
 from flask import Flask, request
-from . import illuminati
+from flask_cors import CORS
+
+from .illuminati import Illuminati
+from .lights import colors, themes
 
 import threading
 
-runner = illuminati.Illuminati()
+runner = Illuminati()
 
 def illuminatiThread():
   runner.run()
@@ -12,6 +15,7 @@ it = threading.Thread(target=illuminatiThread)
 it.start()
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def status():

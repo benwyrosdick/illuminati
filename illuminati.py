@@ -18,16 +18,12 @@ class Illuminati():
     self.last_tick = 0
   
   def set_routine(self, routine, args):
-    hue_colors = list(map(lights.degrees_to_rgb, args['hues'])) if args['hues'] else []
-    hex_colors = list(map(lights.hex2rgb, args['colors'])) if args['colors'] else []
-    all_colors = hue_colors + hex_colors
-
     # build args
     safe_args = {}
     if args['delay']:
       safe_args['delay'] = int(args['delay']) / 1000.0
-    if len(all_colors):
-      safe_args['colors'] = all_colors
+    if args['colors']:
+      safe_args['colors'] = sum(list(map(lights.decode_color, args['colors'])), [])
     if args['spread']:
       safe_args['spread'] = lights.degrees_to_decimal(args['spread'])
     if args['length']:

@@ -16,6 +16,23 @@ colors = {
     'black': (0,0,0)
 }
 
+themes = {
+    'mardi_gras': [(254,212,42),(49,14,89),(158,214,112)],
+    'rainbow': [(255,0,0),(255,127,0),(255,255,0),(0,255,0),(0,0,255),(75,0,130),(143,0,255)],
+    'xmas': [(255,0,0),(0,255,0),(255,255,255)],
+    'easter': [(105,255,185),(118,236,251),(193,253,160),(147,134,230),(242,152,244)]
+}
+
+def decode_color(color):
+    if color in themes:
+        return [*themes[color]]
+    elif color in colors:
+        return [colors[color]]
+    elif len(color) == 6:
+        return [hex2rgb(color)]
+    else:
+        return [degrees_to_rgb(color)]
+
 def get_board(num_pixels=50, auto_write=False, brightness=0.2, pixel_order=neopixel.RGB):
     return neopixel.NeoPixel(board.D18, num_pixels, auto_write=auto_write, brightness=brightness, pixel_order=pixel_order)
 
