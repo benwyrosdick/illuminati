@@ -39,8 +39,8 @@ def get_board(num_pixels=50, auto_write=False, brightness=0.2, pixel_order=neopi
 def hls2rgb(h,l,s):
     return tuple(round(i * 255) for i in colorsys.hls_to_rgb(h,l,s))
 
-def hsv2rgb(h,l,s):
-    return tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h,l,s))
+def hsv2rgb(h,s,v):
+    return tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h,s,v/255))
 
 def hex2rgb(hex):
     lv = len(hex)

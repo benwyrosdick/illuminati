@@ -19,6 +19,6 @@ class Flicker(routine.Routine):
       current_hsv = lights.rgb2hsv(current_color)
       starting = current_hsv[0] - self.spread
       ending = current_hsv[0] + self.spread
-      self.app.pixels[random.randint(0,self.app.num_pixels-1)] = lights.hsv2rgb(random.uniform(starting, ending)%1.0, current_hsv[1], random.uniform(0.2, 1.0))
+      self.app.pixels[random.randint(0,self.app.num_pixels-1)] = lights.hsv2rgb(random.uniform(starting, ending)%1.0, current_hsv[1], current_hsv[2]*random.uniform(0.2, 1.0))
 
     self.app.pixels.show()

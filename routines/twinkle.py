@@ -17,6 +17,6 @@ class Twinkle(routine.Routine):
       current_pos = random.randint(0,self.app.num_pixels-1)
       current_color = self.enumerated_colors[current_pos % len(self.enumerated_colors)]
       current_hsv = lights.rgb2hsv(current_color)
-      self.app.pixels[current_pos] = lights.hsv2rgb(current_hsv[0], current_hsv[1], random.uniform(0.2, 1.0))
+      self.app.pixels[current_pos] = lights.hsv2rgb(current_hsv[0], current_hsv[1], current_hsv[2]*random.uniform(0.2, 1.0))
 
     self.app.pixels.show()
