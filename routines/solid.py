@@ -11,7 +11,7 @@ class Solid(routine.Routine):
 
   def tick(self):
     for i in range(self.app.num_pixels):
-      color = self.colors[i % len(self.colors)]
+      color = self.enumerated_colors[i % len(self.enumerated_colors)]
       self.app.pixels[i] = color
 
     self.app.pixels.show()

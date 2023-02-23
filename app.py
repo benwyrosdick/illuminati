@@ -19,7 +19,12 @@ CORS(app)
 
 @app.route("/")
 def status():
-  return runner.routine.config()
+  return {
+    'routine': runner.routine.config(),
+    'routines': ['off', 'chase', 'cycle', 'flicker', 'rainbow', 'solid', 'trails', 'twinkle'],
+    'colors': colors,
+    'themes': themes
+  }
 
 @app.route("/off")
 def all_off():
@@ -34,18 +39,20 @@ def run_routine(name):
   return routine.config()
 
 def _parse_args(request):
-  hues = request.args.getlist('hue')
   colors = request.args.getlist('color')
   delay = request.args.get('delay')
   spread = request.args.get('spread')
   length = request.args.get('length')
+  spacing = request.args.get('spacing')
+  surround_spacing = request.args.get('surround_spacing')
   reverse = request.args.get('reverse', default=False, type=bool)
 
   return {
-    'hues': hues,
     'colors': colors,
     'delay': delay,
     'spread': spread,
     'length': length,
+    'spacing': spacing,
+    'surround_spacing': surround_spacing,
     'reverse': reverse
   }

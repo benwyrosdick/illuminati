@@ -15,7 +15,7 @@ class Flicker(routine.Routine):
 
   def tick(self):
     for i in range(int(self.app.num_pixels * 0.1)):
-      current_color = self.colors[random.randint(0,len(self.colors)-1)]
+      current_color = self.enumerated_colors[random.randint(0,len(self.enumerated_colors)-1)]
       current_hsv = lights.rgb2hsv(current_color)
       starting = current_hsv[0] - self.spread
       ending = current_hsv[0] + self.spread

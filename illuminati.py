@@ -28,6 +28,10 @@ class Illuminati():
       safe_args['spread'] = lights.degrees_to_decimal(args['spread'])
     if args['length']:
       safe_args['length'] = int(args['length'])
+    if args['spacing']:
+      safe_args['spacing'] = int(args['spacing'])
+    if args['surround_spacing']:
+      safe_args['surround_spacing'] = int(args['surround_spacing'])
     safe_args['reverse'] = args['reverse']
 
     if 'sequence' in self.routine.__dict__:

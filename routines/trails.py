@@ -21,7 +21,7 @@ class Trails(routine.Routine):
     for i in range(self.app.num_pixels):
       color = self.colors[((i + self.sequence) // self.length) % len(self.colors)]
       brightness = 1.0 - ((i + self.sequence) % self.length) * (1.0 / (self.length - 1))
-      hsv = current_hsv = lights.rgb2hsv(color)
+      hsv = lights.rgb2hsv(color)
       self.app.pixels[i] = lights.hsv2rgb(hsv[0], hsv[1], brightness)
 
     self.increment_sequence()
