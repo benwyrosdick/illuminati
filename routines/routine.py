@@ -21,7 +21,7 @@ class Routine():
     self.enumerate_colors()
   
   def config(self):
-    args = self.args
+    args = {**self.args}
     args['delay'] = int(args['delay'] * 1000)
 
     return {
