@@ -5,7 +5,6 @@ from . import routine
 
 defaults = {
   'delay': 0.100,
-  'colors': [ lights.colors['violet'] ],
 }
 
 class Twinkle(routine.Routine):

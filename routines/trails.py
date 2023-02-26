@@ -5,7 +5,6 @@ from . import routine
 
 defaults = {
   'delay': 0.075,
-  'colors': [ lights.colors['violet'] ],
   'length': 20
 }
 

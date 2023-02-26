@@ -1,7 +1,7 @@
 from .. import lights
 
 base_defaults = {
-  'colors': [],
+  'colors': [ lights.colors['red'], lights.colors['green'], lights.colors['blue'] ],
   'delay': 0.1,
   'sequence': 0,
   'sequence_max': 50,

@@ -1,9 +1,7 @@
 from .. import lights
 from . import routine
 
-defaults = {
-  'colors': [ lights.colors['violet'] ],
-}
+defaults = {}
 
 class Solid(routine.Routine):
   def __init__(self, app, args):
