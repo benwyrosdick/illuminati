@@ -5,8 +5,8 @@ from . import routine
 
 defaults = {
   'delay': 0.2,
-  'length': 2,
-  'spacing': 4
+  'length': 1,
+  'surround_spacing': 4
 }
 
 class Chase(routine.Routine):

@@ -1,7 +1,9 @@
 from .. import lights
 from . import routine
 
-defaults = {}
+defaults = {
+  'colors': []
+}
 
 class Off(routine.Routine):
   def __init__(self, app, args):

@@ -1,11 +1,12 @@
 from .. import lights
 
 base_defaults = {
-  'colors': [ lights.colors['red'], lights.colors['green'], lights.colors['blue'] ],
+  'colors': [],
   'delay': 0.1,
   'sequence': 0,
   'sequence_max': 50,
   'length': 1,
+  'spread': 0,
   'spacing': 0,
   'surround_spacing': 0,
   'reverse': False
@@ -41,6 +42,9 @@ class Routine():
       for s in range(self.spacing):
         colors.append(lights.colors['black'])
     for s in range(self.surround_spacing):
+      colors.append(lights.colors['black'])
+
+    if len(colors) == 0:
       colors.append(lights.colors['black'])
     
     self.enumerated_colors = colors
