@@ -24,6 +24,8 @@ class Routine():
   def config(self):
     args = {**self.args}
     args['delay'] = int(args['delay'] * 1000)
+    if 'spread' in args:
+      args['spread'] = int(args['spread'] * 360)
 
     return {
       'name': self.__class__.__name__.lower(),
