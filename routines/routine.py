@@ -1,6 +1,7 @@
 from .. import lights
 
 base_defaults = {
+  'colors': [],
   'delay': 0.1,
   'sequence': 0,
   'sequence_max': 50,
@@ -31,6 +32,7 @@ class Routine():
   
   def enumerate_colors(self):
     colors = []
+
     for color in self.colors:
       for l in range(self.length):
         colors.append(color)

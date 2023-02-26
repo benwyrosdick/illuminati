@@ -5,14 +5,9 @@ from . import routine
 
 defaults = {
   'delay': 0.2,
-  'colors': [
-    lights.colors['violet'],
-    lights.colors['violet'],
-    lights.colors['black'],
-    lights.colors['black'],
-    lights.colors['black'],
-    lights.colors['black']
-  ],
+  'colors': [ lights.colors['violet'] ],
+  'length': 2,
+  'spacing': 4
 }
 
 class Chase(routine.Routine):
