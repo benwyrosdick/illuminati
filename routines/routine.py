@@ -50,11 +50,12 @@ class Routine():
     self.enumerated_colors = colors
   
   def increment_sequence(self):
-    if self.reverse:
-      self.sequence -= 1
-    else:
-      self.sequence += 1
-    self.sequence %= self.sequence_max
+    if self.sequence_max > 0:
+      if self.reverse:
+        self.sequence -= 1
+      else:
+        self.sequence += 1
+      self.sequence %= self.sequence_max
 
   def tick(self):
     self.app.pixels.fill(lights.colors['black'])
