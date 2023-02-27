@@ -3,7 +3,6 @@ from . import routine
 
 defaults = {
   'delay': 0.1,
-  'colors': [ lights.colors['blue'], lights.colors['red'] ],
   'length': 50,
 }
 
