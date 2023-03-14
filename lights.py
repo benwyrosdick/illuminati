@@ -35,7 +35,7 @@ def decode_color(color):
     else:
         return [degrees_to_rgb(color)]
 
-def get_board(num_pixels=50, auto_write=False, brightness=0.2, pixel_order=neopixel.RGB):
+def get_board(num_pixels=50, auto_write=False, brightness=0.5, pixel_order=neopixel.RGB):
     return neopixel.NeoPixel(board.D18, num_pixels, auto_write=auto_write, brightness=brightness, pixel_order=pixel_order)
 
 def hls2rgb(h,l,s):
