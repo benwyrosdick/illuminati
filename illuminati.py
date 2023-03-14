@@ -7,13 +7,10 @@ from .routines import off, flicker, rainbow, solid, chase, twinkle, trails, cycl
 
 default_delay = 0.5
 tick_speed = 0.005
-default_brightness=0.5
-num_pixels=50
-pixel_order=neopixel.RGB
 
 class Illuminati():
-  def __init__ (self):
-    self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=default_brightness, pixel_order=pixel_order)
+  def __init__ (self, num_pixels=50, brightness=0.5, pixel_order=neopixel.RGB):
+    self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=brightness, pixel_order=pixel_order)
     self.num_pixels = num_pixels
 
     self.routine = self.routine = off.Off(self, {})
@@ -25,7 +22,7 @@ class Illuminati():
     safe_args = {}
     if args['brightness']:
       safe_args['brightness'] = int(args['brightness']) / 100.0
-      self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=safe_args['brightness'], pixel_order=pixel_order)
+      self.pixels.brightness = safe_args['brightness']
     if args['delay']:
       safe_args['delay'] = int(args['delay']) / 1000.0
     if args['colors']:
