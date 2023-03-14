@@ -7,10 +7,11 @@ from .routines import off, flicker, rainbow, solid, chase, twinkle, trails, cycl
 
 default_delay = 0.5
 tick_speed = 0.005
+default_brightness=0.5
 
 class Illuminati():
   def __init__ (self, num_pixels=50, brightness=0.2, pixel_order=neopixel.RGB):
-    self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=brightness, pixel_order=pixel_order)
+    self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=default_brightness, pixel_order=pixel_order)
     self.num_pixels = num_pixels
 
     self.routine = self.routine = off.Off(self, {})
