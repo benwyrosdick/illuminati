@@ -21,6 +21,9 @@ class Illuminati():
   def set_routine(self, routine, args):
     # build args
     safe_args = {}
+    if args['brightness']:
+      safe_args['brightness'] = int(args['brightness']) / 100.0
+      self.pixels.brightness = safe_args['brightness']
     if args['delay']:
       safe_args['delay'] = int(args['delay']) / 1000.0
     if args['colors']:

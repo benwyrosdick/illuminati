@@ -3,6 +3,7 @@ from .. import lights
 base_defaults = {
   'colors': [],
   'delay': 0.1,
+  'brightness': 0.5,
   'sequence': 0,
   'sequence_max': 50,
   'length': 1,
@@ -25,6 +26,7 @@ class Routine():
   def config(self):
     args = {**self.args}
     args['delay'] = int(args['delay'] * 1000)
+    args['brightness'] = int(args['brightness'] * 100)
     if 'spread' in args:
       args['spread'] = int(args['spread'] * 360)
 
