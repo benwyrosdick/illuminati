@@ -40,7 +40,7 @@ def run_routine(name):
 
 def _parse_args(request):
   colors = request.args.getlist('color')
-  colors = request.args.get('brightness')
+  brightness = request.args.get('brightness')
   delay = request.args.get('delay')
   spread = request.args.get('spread')
   length = request.args.get('length')
