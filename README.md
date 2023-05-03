@@ -4,7 +4,7 @@ Find official documentation here: https://learn.adafruit.com/neopixels-on-raspbe
 
 On a Raspberry Pi, open a terminal and enter the following commands:
 
-    sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
+    sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel pyyaml
     sudo python3 -m pip install --force-reinstall adafruit-blinka
 
 # Setup Illuminati to control the LEDs
