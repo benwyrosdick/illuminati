@@ -5,11 +5,15 @@ from .illuminati import Illuminati
 from .lights import colors, themes
 
 import threading
-import yaml
+import os
 
-with open("$HOME/illuminati.yaml", 'r') as confFile:
-    config = yaml.load(confFile, Loader=yaml.FullLoader)
-    print("Read successful")
+configPath = "$HOME/illuminati.yaml"
+config = {}
+
+if (os.path.isfile(configPath)):
+  with open(configPath, 'r') as confFile:
+      config = yaml.load(confFile, Loader=yaml.FullLoader)
+      print("Read successful")
 print(config)
 
 runner = Illuminati()
