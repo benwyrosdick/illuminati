@@ -8,7 +8,7 @@ defaults = {
   'sequence_max': 360,
 }
 
-class Cycle(routine.Routine):
+class Clock(routine.Routine):
   def __init__(self, app, args):
     super().__init__(app, args, defaults)
 
