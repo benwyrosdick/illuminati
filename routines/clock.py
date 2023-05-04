@@ -21,9 +21,9 @@ class Clock(routine.Routine):
     lights_per_block = int(self.app.num_pixels / 12)
 
     self.app.pixels.fill(lights.colors['black'])
-    self.app.pixels[(self.app.top_light + int(lights_per_block * hour_hand_position)) % self.app.num_pixels] = self.enumerated_colors[lights.colors['red']]
-    self.app.pixels[(self.app.top_light + int(lights_per_block * minute_hand_position)) % self.app.num_pixels] = self.enumerated_colors[lights.colors['green']]
-    self.app.pixels[(self.app.top_light + int(lights_per_block * second_hand_position)) % self.app.num_pixels] = self.enumerated_colors[lights.colors['blue']]
+    self.app.pixels[(self.app.top_light + int(lights_per_block * hour_hand_position)) % self.app.num_pixels] = lights.colors['red']
+    self.app.pixels[(self.app.top_light + int(lights_per_block * minute_hand_position)) % self.app.num_pixels] = lights.colors['green']
+    self.app.pixels[(self.app.top_light + int(lights_per_block * second_hand_position)) % self.app.num_pixels] = lights.colors['blue']
 
     self.increment_sequence()
     self.app.pixels.show()
