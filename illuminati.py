@@ -3,19 +3,22 @@ import random
 import time
 
 from . import lights
-from .routines import off, flicker, rainbow, solid, chase, twinkle, trails, cycle, fade
+from .routines import off, flicker, rainbow, solid, chase, twinkle, trails, cycle, fade, clock
 
 default_delay = 0.5
 tick_speed = 0.005
 
 class Illuminati():
-  def __init__ (self, num_pixels=50, brightness=0.5, pixel_order=neopixel.RGB):
+  def __init__ (self, num_pixels=50, brightness=0.5, pixel_order=neopixel.RGB, north_light=0, top_light=0, direction='cw'):
     self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=brightness, pixel_order=pixel_order)
     self.num_pixels = num_pixels
 
     self.routine = self.routine = off.Off(self, {})
     self.delay = default_delay
     self.last_tick = 0
+    self.north_light = north_light
+    self.top_light = top_light
+    self.direction = direction
   
   def set_routine(self, routine, args):
     # build args
@@ -59,6 +62,8 @@ class Illuminati():
       self.routine = cycle.Cycle(self, safe_args)
     elif (routine == 'fade'):
       self.routine = fade.Fade(self, safe_args)
+    elif (routine == 'clock'):
+      self.routine = clock.Clock(self, safe_args)
 
     self.delay = self.routine.delay
 

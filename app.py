@@ -27,7 +27,7 @@ CORS(app)
 def status():
   return {
     'routine': runner.routine.config(),
-    'routines': ['off', 'chase', 'cycle', 'fade', 'flicker', 'rainbow', 'solid', 'trails', 'twinkle'],
+    'routines': ['off', 'chase', 'cycle', 'fade', 'flicker', 'rainbow', 'solid', 'trails', 'twinkle', 'clock'],
     'colors': colors,
     'themes': themes
   }
