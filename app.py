@@ -5,18 +5,22 @@ from .illuminati import Illuminati
 from .lights import colors, themes
 
 import threading
+import yaml
 import os
 
-configPath = "$HOME/illuminati.yaml"
+configPath = os.path.expanduser('~') + "/illuminati.yaml"
 config = {}
 
 if (os.path.isfile(configPath)):
   with open(configPath, 'r') as confFile:
       config = yaml.load(confFile, Loader=yaml.FullLoader)
-      print("Read successful")
-print(config)
 
-runner = Illuminati()
+runner = Illuminati(
+  num_pixels=config.get('num_pixels', 50),
+  north_light=config.get('north_light', 0),
+  top_light=config.get('top_light', 0),
+  direction=config.get('direction', 'cw')
+)
 
 def illuminatiThread():
   runner.run()
