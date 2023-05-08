@@ -22,7 +22,7 @@ class Clock(routine.Routine):
 
     self.app.pixels.fill(lights.colors['black'])
 
-    hour_hand_color = self.enumerated_colors[0] if self.enumerate_colors[0] !== lights.colors['black'] else lights.colors['red']
+    hour_hand_color = self.enumerated_colors[0] if self.enumerated_colors[0] != lights.colors['black'] else lights.colors['red']
     minute_hand_color = self.enumerated_colors[1] if len(self.enumerated_colors) > 1 else lights.colors['green']
     second_hand_color = self.enumerated_colors[2] if len(self.enumerated_colors) > 2 else lights.colors['blue']
 
