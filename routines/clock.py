@@ -17,7 +17,7 @@ class Clock(routine.Routine):
 
     hour_hand_position = (now.hour % 12) + (now.minute / 60)
     minute_hand_position = (now.minute / 5)
-    second_hand_position = (now.second / 5)
+    second_hand_position = ((now.second + now.microsecond/1000000) / 5)
     lights_per_block = int(self.app.num_pixels / 12)
 
     self.app.pixels.fill(lights.colors['black'])
