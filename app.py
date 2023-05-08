@@ -15,10 +15,15 @@ if (os.path.isfile(configPath)):
   with open(configPath, 'r') as confFile:
       config = yaml.load(confFile, Loader=yaml.FullLoader)
 
+num_pixels = config.get('num_pixels', 50)
 runner = Illuminati(
-  num_pixels=config.get('num_pixels', 50),
+  num_pixels=num_pixels,
   north_light=config.get('north_light', 0),
   top_light=config.get('top_light', 0),
+  top_right_light=config.get('top_right_light', num_pixels/4-1),
+  bottom_right_light=config.get('bottom_right_light', num_pixels/4*2-1),
+  bottom_left_light=config.get('bottom_left_light', num_pixels/4*3-1),
+  top_left_light=config.get('top_left_light', num_pixels-1),
   direction=config.get('direction', 'cw')
 )
 
