@@ -9,7 +9,7 @@ default_delay = 0.5
 tick_speed = 0.005
 
 class Illuminati():
-  def __init__ (self, num_pixels=50, brightness=0.5, pixel_order=neopixel.RGB, north_light=0, top_light=0, direction='cw'):
+  def __init__ (self, num_pixels=50, brightness=0.5, pixel_order=neopixel.RGBW, north_light=0, top_light=0, direction='cw'):
     self.pixels = lights.get_board(num_pixels, auto_write=False, brightness=brightness, pixel_order=pixel_order)
     self.num_pixels = num_pixels
 
