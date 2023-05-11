@@ -39,7 +39,7 @@ def get_board(num_pixels=50, auto_write=False, brightness=0.5, pixel_order=neopi
     print(pixel_order)
     print(neopixel.RGBW)
     print(neopixel.GRBW)
-    return neopixel.NeoPixel(board.D18, num_pixels, bbp=4, auto_write=auto_write, brightness=brightness, pixel_order=pixel_order)
+    return neopixel.NeoPixel(board.D18, num_pixels, bpp=4, auto_write=auto_write, brightness=brightness, pixel_order=pixel_order)
 
 def hls2rgb(h,l,s):
     return tuple(round(i * 255) for i in colorsys.hls_to_rgb(h,l,s))
