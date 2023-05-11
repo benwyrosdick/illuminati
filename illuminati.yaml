@@ -1,0 +1,10 @@
+---
+  num_pixels: 50
+  brightness: 0.5
+  north_light: 6
+  top_light: 4
+  top_right_light: 8
+  bottom_right_light: 23
+  bottom_left_light: 35
+  top_left_light: 48
+  direction: cw
